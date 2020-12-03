@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Accounts</title>
+</head>
+
+<h1>User Account details</h1>
+<h3><a href="/user">Go to UserAccounts</a></h3>
+<hr/>
+
+<body>
+<label style="color: blue"> Id </label>
+<p th:text="${userAccount.getId()}">VALUE</p>
+<label style="color: blue"> User Name </label>
+<p th:text="${userAccount.getUserName()}">VALUE</p>
+<label style="color: blue"> First Name </label>
+<p th:text="${userAccount.getFirstName()}">VALUE</p>
+<label style="color: blue"> Last Name </label>
+<p th:text="${userAccount.getLastName()}">VALUE</p>
+<label style="color: blue"> Role </label>
+<p th:text="${userAccount.getRole()}">VALUE</p>
+<label style="color: blue"> Created At </label>
+<p th:text="${userAccount.getDateCreated()}">VALUE</p>
+<br/>
+<br/>
+<label style="color: blue"> Active Status </label>
+<p th:text="${userAccount.isStatus()}">VALUE</p>
+
+<div th:if="${securityBean.userAdmin}">
+    <form th:method="PATCH" th:action="@{/user/{id}/statusChange(id=${userAccount.getId()})}"
+          th:object="${userAccount}">
+        <label for="role"> Status </label>
+        <select th:field="*{status}" id="role">
+            <option th:value="true" th:text="ACTIVE"></option>
+            <option th:value="false" th:text="INACTIVE"></option>
+        </select>
+        <input type="submit" value="Ok">
+    </form>
+</div>
+
+
+</body>
+</html>

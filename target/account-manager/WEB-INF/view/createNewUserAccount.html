@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New User Account</title>
+</head>
+<body>
+
+<h1>New User Account</h1>
+<h3><a href="/user">Go to UserAccounts</a></h3>
+
+<hr/>
+
+<form th:method="POST" th:action="@{/user}" th:object="${userAccount}">
+    <label for="userName"> User Name </label>
+    <input type="text" th:field="*{userName}" id="userName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Name error</div>
+    <br/>
+    <br/>
+    <label for="password"> Password </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name error</div>
+    <br/>
+    <br/>
+    <label for="firstName"> First name </label>
+    <input type="text" th:field="*{firstName}" id="firstName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name error</div>
+    <br/>
+    <br/>
+    <label for="lastName"> Last name </label>
+    <input type="text" th:field="*{lastName}" id="lastName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name error</div>
+    <br/>
+    <br/>
+    <label for="role"> Role </label>
+    <select th:field="*{role}" id="role">
+        <option th:value="USER" th:text="User"></option>
+        <option th:value="ADMIN" th:text="Admin"></option>
+    </select>
+    <br/>
+    <br/>
+    <input type="submit" value="Create">
+</form>
+
+
+</body>
+</html>

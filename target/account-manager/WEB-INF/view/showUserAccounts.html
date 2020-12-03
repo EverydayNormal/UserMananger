@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Accounts</title>
+</head>
+<body>
+
+<h1>User Accounts</h1>
+<h3><a href="/logOut">Log out</a></h3>
+<hr/>
+
+<div th:each="userAccount : ${userAccounts}">
+
+    <a th:href="@{/user/{id}(id = ${userAccount.getId()})}" th:text="${userAccount.getUserName()}"></a>
+
+    <div th:if="${securityBean.userAdmin}">
+
+
+        <button>
+            <a th:href="@{/user/{id}/edit(id = ${userAccount.getId()})}"> Edit</a>
+        </button>
+
+
+        <form th:method="POST" th:action="@{/user/{id}/delete(id=${userAccount.getId()})}">
+            <input type="submit" value="Delete">
+        </form>
+
+    </div>
+
+</div>
+
+<h2>-------------------------------</h2>
+
+<div th:if="${securityBean.userAdmin}">
+    <button>
+        <a href="/user/new">Create new User</a>
+    </button>
+</div>
+
+
+</body>
+</html>

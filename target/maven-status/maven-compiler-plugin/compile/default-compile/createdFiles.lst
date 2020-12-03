@@ -1,0 +1,8 @@
+my\java\test\accountmanager\dao\UserDaoImpl.class
+my\java\test\accountmanager\dao\UserDao.class
+my\java\test\accountmanager\mapper\UserAccountMapper.class
+my\java\test\accountmanager\config\SpringConfig.class
+my\java\test\accountmanager\model\UserAccount.class
+my\java\test\accountmanager\controller\UserAccountController.class
+my\java\test\accountmanager\security\SecurityBean.class
+my\java\test\accountmanager\config\SpringInitializer.class
